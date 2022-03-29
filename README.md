@@ -5,15 +5,10 @@ O objetivo do sistema é agilizar e controlar o processo de hospedagem de um hot
 ## Manutenção de Cadastros
 
 ```
-* Gerente
-* Funcionário
-* Cliente
-* UF
-* Cidade
-* Bairro
-* Fabricante
-* Modelo
-* Automóvel
+* Quartos
+* Clientes
+* Reservas
+* Veículos
 ```
 
 ## Processos de Negócio
@@ -29,11 +24,8 @@ O objetivo do sistema é agilizar e controlar o processo de hospedagem de um hot
 ## Relatórios
 
 ```
-* Listar Empréstimos (Por Cliente, Data Início e Data Término)
+* Listar Quartos (Por Status)
 * Listar Reservas (Por Cliente, Status, Data Início e Data Término)
-* Listar Devoluções (Por Cliente, Automóvel, Data Início e Data Término)
-* Listar Totais e Quantidades de Empréstimos de Clientes (Por Início e Término)
-* Listar Quantidades de Empréstimos nos Bairros (Por Início e Término)
+* Listar Totais e Quantidades de Hospedagens de Clientes (Por Início e Término)
 * Listar Quantidades de Reservas de Clientes (Por Status, Início e Término)
-* Listar Quantidades de Devoluções de Clientes (Por Automóvel, Data Início e Data Término)	
 ```

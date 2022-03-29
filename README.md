@@ -1,6 +1,6 @@
-# SCLA-Backend-Spring
+# SCH-Sistema-de-Controle-Hoteleiro
 
-O objetivo do sistema é agilizar e controlar o processo de locação de automóveis e garantir maior segurança e confiabilidade. Deverão ser gerados relatórios referentes a locação de automóveis, levando em consideração, os quesitos de empréstimos, renovações de empréstimos, reservas, devoluções e pagamentos de multas. O sistema deverá calcular automaticamente o valor dos pagamentos a serem efetuados em cada empréstimo, incluindo multas, descontos devidos e reparos referente a danos veiculares caso necessário.
+O objetivo do sistema é agilizar e controlar o processo de hospedagem de um hotel, além de garantir maior segurança e confiabilidade. Nesse sentido, deverão ser gerados relatórios referentes aos serviços de hospedagens realizados, levando em consideração, o aluguel de quartos, de veículos e locais para eventos. Por fim, o sistema deverá controlar cada hospedagem e seus respectivos serviços oferecidos e disponíveis, além de calcular automaticamente o valor total referente a hospedagem, incluindo serviços extras e a locação de veículos caso necessário.
 
 ## Manutenção de Cadastros
 
@@ -19,11 +19,11 @@ O objetivo do sistema é agilizar e controlar o processo de locação de automó
 ## Processos de Negócio
 
 ```
-* Empréstimo de Automóvel
-* Renovação de Empréstimo de Automóvel
-* Reserva de Automóvel
-* Devolução de Automóvel
-* Pagamento de Multa
+* Gerenciamento de Quartos
+* Gerenciamento de Reservas
+* Gerenciamento de Clientes
+* Locação de Veículos
+* Reserva de Locais para Eventos
 ```
 
 ## Relatórios

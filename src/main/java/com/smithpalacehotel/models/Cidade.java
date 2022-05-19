@@ -19,4 +19,8 @@ public class Cidade implements Serializable{
     @NotBlank(message = "O nome da UF deve ser preenchido.")
     @Size(min = 2, max = 60, message = "O nome da UF deve ter entre 2 e 60 letras.")
     public String nome;
+    
+    @ManyToOne
+    @JoinColumn(name = "uf_id")
+    private Uf uf;
 }

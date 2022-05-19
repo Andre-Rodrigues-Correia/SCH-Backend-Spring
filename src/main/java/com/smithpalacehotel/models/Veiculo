@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class ReservaVeiculo implements Serializable{
+public class Veiculo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;

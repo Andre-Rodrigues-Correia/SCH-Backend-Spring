@@ -12,15 +12,17 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 public class ReservaVeiculo implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  public Integer id;
 
-    @NotBlank(message = "A data deve ser preenchida.")
-    public LocalDateTime data;
+  @NotBlank(message = "A data deve ser preenchida.")
+  public LocalDateTime data;
 
-    @NotBlank(message = "O status deve ser preenchido.")
-    public Boolean status;
-  
-  //referenciar reservaQuarto
+  @NotBlank(message = "O status deve ser preenchido.")
+  public Boolean status;
+
+  @ManyToOne
+  @JoinColumn(name = "veiculo_id")
+  public Veiculo veiculo;
 }

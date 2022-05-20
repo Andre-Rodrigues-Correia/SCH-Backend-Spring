@@ -23,6 +23,4 @@ public class Veiculo implements Serializable{
     
     @NotBlank(message = "A quantidade de vezes usado deve ser preenchida.")
     public Integer quntidadeVezesUsado;
-  
-  //referenciar reservaVeiculo
 }

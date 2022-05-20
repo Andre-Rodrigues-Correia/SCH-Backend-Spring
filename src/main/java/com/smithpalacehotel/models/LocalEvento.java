@@ -17,7 +17,7 @@ public class LocalEvento implements Serializable{
   
     @Column(length = 100)
     @NotBlank(message = "O nome do local deve ser preenchido")
-    @Size(min = 5, 100, message = "O nome do local deve ter entre 5 e 100 letras.")
+    @Size(min = 5, max = 100, message = "O nome do local deve ter entre 5 e 100 letras.")
     public String local;
 
     @NotBlank(message = "O status do local deve ser informado")

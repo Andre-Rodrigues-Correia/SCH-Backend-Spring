@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class ReservaEvento {
+public class ReservaEvento implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
@@ -21,8 +21,7 @@ public class ReservaEvento {
 
     @NotBlank(message = "O status da reserva de evento deve ser preenchido.")
     public Boolean status;
-  
-    // Referencia localEvento
+
     @ManyToOne
     @JoinColumn(name = "localevento_id")
     public LocalEvento localEvento;

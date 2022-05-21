@@ -1,9 +1,9 @@
 package com.smithpalacehotel.models;
 
 import java.io.Serializable;
-import javax.validation.constraints.;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
-import javax.persistence.;
+import javax.persistence.*;
 import lombok.*;
 
 @Entity
@@ -25,7 +25,11 @@ public class ReservaQuarto implements Serializable{
   @NotBlank(message = "O status deve ser preenchido.")
   public Boolean status;
 
-  @OneToMany
+  @ManyToOne
   @JoinColumn(name = "quarto_id")
   public Quarto quarto;
+
+  @ManyToOne
+  @JoinColumn(name = "cliente_id")
+  public Cliente cliente;
 }

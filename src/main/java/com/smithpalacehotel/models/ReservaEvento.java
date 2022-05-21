@@ -25,4 +25,8 @@ public class ReservaEvento implements Serializable{
     @ManyToOne
     @JoinColumn(name = "localevento_id")
     public LocalEvento localEvento;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    public Cliente cliente;
 }

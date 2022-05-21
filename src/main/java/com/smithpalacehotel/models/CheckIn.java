@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class CheckIn {
+public class CheckIn implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
@@ -19,5 +19,11 @@ public class CheckIn {
     @NotBlank(message = "A data deve ser preenchida.")
     public LocalDateTime dataCheckin;
 
-    // Referenciar a reserva
+    @OneToOne
+    @JoinColumn(name = "reservaevento_id")
+    public ReservaEvento reservaEvento;
+
+    @OneToOne
+    @JoinColumn(name = "reservaquarto_id")
+    public ReservaQuarto reservaQuarto;
 }

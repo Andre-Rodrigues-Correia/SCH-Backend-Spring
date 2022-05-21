@@ -12,8 +12,8 @@ public class Cliente extends Pessoa{
     public Float valorTotal;
 
     @Builder
-    public Cliente(Integer id, String nome, String cpf, String login, String senha) {
-        super(id, nome, cpf, login, senha);
+    public Cliente(Integer id, String nome, String cpf, String login, String senha, Cidade cidade) {
+        super(id, nome, cpf, login, senha, cidade);
         this.login = login;
         this.senha = senha;
     }

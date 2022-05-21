@@ -25,4 +25,8 @@ public class ReservaVeiculo implements Serializable{
   @ManyToOne
   @JoinColumn(name = "veiculo_id")
   public Veiculo veiculo;
+
+  @OneToOne
+  @JoinColumn(name = "reservaquarto_id")
+  public ReservaQuarto reservaQuarto;
 }

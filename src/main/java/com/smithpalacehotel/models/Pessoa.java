@@ -29,5 +29,13 @@ public abstract class Pessoa implements Serializable{
     @NotBlank(message = "Nome deve ser preenchido")
     @Size(min = 5, max = 50, message = "O nome deve ter entre 5 e 100 letras.")
     public String login;
+
+    @Column(length = 30)
+    @NotBlank(message = "A senha deve ser preenchida")
+    @Size(min = 8, max = 30, message = "A senha deve ter entre 8 e 30 caracteres.")
     public String senha;
+
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
+    public Cidade cidade;
 }

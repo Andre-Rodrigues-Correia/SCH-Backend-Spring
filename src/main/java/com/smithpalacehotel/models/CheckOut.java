@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class CheckOut {
+public class CheckOut implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
@@ -22,4 +22,8 @@ public class CheckOut {
     @OneToOne
     @JoinColumn(name="checkin_id")
     public CheckIn checkin;
+
+    @OneToOne
+    @JoinColumn(name = "reservaquarto_id")
+    public ReservaQuarto reservaQuarto;
 }

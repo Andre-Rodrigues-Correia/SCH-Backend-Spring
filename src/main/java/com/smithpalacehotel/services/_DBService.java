@@ -19,6 +19,8 @@ public class _DBService {
     private FuncionarioRepository funcionarioRepository;
     @Autowired
     private ClienteRepository clienteRepository;
+    @Autowired
+    private VeiculoRepository veiculoRepository;
 
     public void instantiateTestDatabase() throws ParseException {
         // Instanciando os objetos de modelo
@@ -40,11 +42,16 @@ public class _DBService {
         // Cliente
         Cliente cliente1 = new Cliente(null, "Carlos Eduardo", "11111111115", "carlosedu", "ngmsabeminhasenha", cidade2);
         Cliente cliente2 = new Cliente(null, "Maria Joaquina", "11111111116", "mariajq", "cirilo321", cidade2);
+        
+        //Veiculo
+        Veiculo veiculo1 = new Veiculo(null, "BEE4R22", true, "Corolla", 8, cidade2);
+        Veiculo veiculo2 = new Veiculo(null, "BAE4Z12", false, "C4 Pallas", 21, cidade2);
 
         ufRepository.saveAll(Arrays.asList(uf1, uf2));
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2));
         gerenteRepository.saveAll(Arrays.asList(gerente1, gerente2));
         funcionarioRepository.saveAll(Arrays.asList(funcionario1, funcionario2));
         clienteRepository.saveAll(Arrays.asList(cliente1, cliente2));
+        veiculoRepository.saveAll(Arrays.asList(veiculo1, veiculo2));
     }
 }

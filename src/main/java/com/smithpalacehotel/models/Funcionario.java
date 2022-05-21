@@ -1,7 +1,5 @@
 package com.smithpalacehotel.models;
 
-import java.io.Serializable;
-import javax.validation.constraints.*;
 import javax.persistence.*;
 import lombok.*;
 

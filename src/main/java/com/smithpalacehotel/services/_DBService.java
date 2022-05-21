@@ -28,10 +28,12 @@ public class _DBService {
         // Instanciando os objetos de modelo
         Uf uf1 = new Uf(null, "ES", "Espírito Santo");
         Uf uf2 = new Uf(null, "MG", "Minas Gerais");
+        Uf uf3 = new Uf(null, "RJ", "Rio de Janeiro");
 
         // cidade
         Cidade cidade1 = new Cidade(null, "Cachoeiro de Itapemirim", uf1);
-        Cidade cidade2 = new Cidade(null, "Belo Horizonte", uf1);
+        Cidade cidade2 = new Cidade(null, "Belo Horizonte", uf2);
+        Cidade cidade2 = new Cidade(null, "Volta Redonda", uf3);
 
         // Gerente
         Gerente gerente1 = new Gerente(null, "João da Silva", "11111111111", "joaosilva", "minhasenha123", cidade1);
@@ -40,18 +42,22 @@ public class _DBService {
         // Funcionario
         Funcionario funcionario1 = new Funcionario(null, "Euclides Campos", "11111111113", "euclides", "catfish12", cidade1);
         Funcionario funcionario2 = new Funcionario(null, "Carlos Machado", "11111111114", "cmachado", "meupaieterno", cidade1);
+        Funcionario funcionario3 = new Funcionario(null, "Irineu Silva", "11111111115", "isilva", "HexadoBrasil", cidade1);
 
         // Cliente
         Cliente cliente1 = new Cliente(null, "Carlos Eduardo", "11111111115", "carlosedu", "ngmsabeminhasenha", cidade2);
         Cliente cliente2 = new Cliente(null, "Maria Joaquina", "11111111116", "mariajq", "cirilo321", cidade2);
+        Cliente cliente2 = new Cliente(null, "Pedro Sampaio, "11111111117", "pedrosam", "dançarina", cidade3);
         
         //Veiculo
         Veiculo veiculo1 = new Veiculo(null, "BEE4R22", true, "Corolla", 8, cidade2);
         Veiculo veiculo2 = new Veiculo(null, "BAE4Z12", false, "C4 Pallas", 21, cidade2);
+        Veiculo veiculo3 = new Veiculo(null, "JAO4Z12", true, "Crossfox", 10, cidade3);
         
         //Local Evento
         LocalEvento localEvento1 = new LocalEvento(null, "Salão de Festas", false, 300);
         LocalEvento localEvento2 = new LocalEvento(null, "Área de Churrasco", true, 50);
+        LocalEvento localEvento3 = new LocalEvento(null, "Salão de Festas Pequeno", true, 100);
 
         ufRepository.saveAll(Arrays.asList(uf1, uf2));
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2));

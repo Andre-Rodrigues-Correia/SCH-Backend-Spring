@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+
+import java.io.IOException;
 import java.text.ParseException;
 import com.smithpalacehotel.services.*;
 
@@ -14,7 +16,7 @@ public class TestConfig {
     private _DBService dbService;
 
     @Bean
-    public Boolean instatiateDatabase() throws ParseException {
+    public Boolean instatiateDatabase() throws ParseException, IOException{
         dbService.instantiateTestDatabase();
         return true;
     }

@@ -20,7 +20,10 @@ public class Veiculo implements Serializable{
 
     @NotBlank(message = "O status deve ser preenchido.")
     public Boolean statusVeiculo;
+
+    @NotBlank
+    public String nomeVeiculo;
     
     @NotBlank(message = "A quantidade de vezes usado deve ser preenchida.")
-    public Integer quntidadeVezesUsado;
+    public Integer quantidadeVezesUsado;
 }

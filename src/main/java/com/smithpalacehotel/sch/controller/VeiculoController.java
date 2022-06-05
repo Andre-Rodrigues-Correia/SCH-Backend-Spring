@@ -13,31 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smithpalacehotel.sch.models.Veiculos;
-import com.smithpalacehotel.sch.services.VeiculosService;
+import com.smithpalacehotel.sch.models.Veiculo;
+import com.smithpalacehotel.sch.services.Veiculoervice;
 import com.smithpalacehotel.sch.services.exceptions.ConstraintException;
 
 @RestController
-@RequestMapping(value = "/veiculos")
-public class VeiculosController {
+@RequestMapping(value = "/veiculo")
+public class VeiculoController {
 
     @Autowired
-    private VeiculosService service;
+    private VeiculoService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Veiculos>> findAll() {
-        Collection<Veiculos> collection = service.findAll();
+    public ResponseEntity<Collection<Veiculo>> findAll() {
+        Collection<Veiculo> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Veiculos> find(@PathVariable Integer id) {
-        Veiculos obj = service.findById(id);
+    public ResponseEntity<Veiculo> find(@PathVariable Integer id) {
+        Veiculo obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Veiculos> insert(@Valid @RequestBody Veiculos obj, BindingResult br) {
+    public ResponseEntity<Veiculo> insert(@Valid @RequestBody Veiculo obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.insert(obj);
@@ -45,7 +45,7 @@ public class VeiculosController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Veiculos> update(@Valid @RequestBody Veiculos obj, BindingResult br) {
+    public ResponseEntity<Veiculo> update(@Valid @RequestBody Veiculo obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.update(obj);

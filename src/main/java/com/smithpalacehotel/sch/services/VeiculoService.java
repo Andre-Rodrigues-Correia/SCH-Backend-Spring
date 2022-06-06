@@ -54,7 +54,7 @@ public class VeiculoService {
         }
     }
 
-    public Collection<LocalEvento> findAll() {
+    public Collection<Veiculo> findAll() {
         return repository.findAll();
     }
 

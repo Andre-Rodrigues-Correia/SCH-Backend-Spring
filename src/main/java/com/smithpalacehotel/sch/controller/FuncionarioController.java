@@ -13,31 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smithpalacehotel.sch.models.Veiculo;
-import com.smithpalacehotel.sch.services.VeiculoService;
+import com.smithpalacehotel.sch.models.Funcionario;
+import com.smithpalacehotel.sch.services.FuncionarioService;
 import com.smithpalacehotel.sch.services.exceptions.ConstraintException;
 
 @RestController
-@RequestMapping(value = "/veiculo")
-public class VeiculoController {
-
+@RequestMapping(value = "/funcionarios")
+public class FuncionarioController {
     @Autowired
-    private VeiculoService service;
+    private FuncionarioService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Veiculo>> findAll() {
-        Collection<Veiculo> collection = service.findAll();
+    public ResponseEntity<Collection<Funcionario>> findAll() {
+        Collection<Funcionario> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Veiculo> find(@PathVariable Integer id) {
-        Veiculo obj = service.findById(id);
+    public ResponseEntity<Funcionario> find(@PathVariable Integer id) {
+        Funcionario obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Veiculo> insert(@Valid @RequestBody Veiculo obj, BindingResult br) {
+    public ResponseEntity<Funcionario> insert(@Valid @RequestBody Funcionario obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.insert(obj);
@@ -45,7 +44,7 @@ public class VeiculoController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Veiculo> update(@Valid @RequestBody Veiculo obj, BindingResult br) {
+    public ResponseEntity<Funcionario> update(@Valid @RequestBody Funcionario obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.update(obj);
@@ -58,4 +57,9 @@ public class VeiculoController {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value = "/{login}/{senha}", method = RequestMethod.GET)
+    public ResponseEntity<Funcionario> findByLoginAndSenha(@PathVariable String login, @PathVariable String senha) {
+        Funcionario obj = service.findByLoginAndSenha(login, senha);
+        return ResponseEntity.ok().body(obj);
+    }
 }

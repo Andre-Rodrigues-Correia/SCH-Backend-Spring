@@ -45,9 +45,10 @@ public class LocalEventoController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<LocalEvento> update(@Valid @RequestBody LocalEvento obj, BindingResult br) {
+    public ResponseEntity<LocalEvento> update(@PathVariable Integer id, @Valid @RequestBody LocalEvento obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

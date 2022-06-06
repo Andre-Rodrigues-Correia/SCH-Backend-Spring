@@ -47,9 +47,10 @@ public class CidadeController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Cidade> update(@Valid @RequestBody Cidade obj, BindingResult br) {
+    public ResponseEntity<Cidade> update(@PathVariable Integer id, @Valid @RequestBody Cidade obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

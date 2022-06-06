@@ -45,9 +45,10 @@ public class ClienteController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Cliente> update(@Valid @RequestBody Cliente obj, BindingResult br) {
+    public ResponseEntity<Cliente> update(@PathVariable Integer id, @Valid @RequestBody Cliente obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

@@ -45,9 +45,10 @@ public class GerenteController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Gerente> update(@Valid @RequestBody Gerente obj, BindingResult br) {
+    public ResponseEntity<Gerente> update(@PathVariable Integer id, @Valid @RequestBody Gerente obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

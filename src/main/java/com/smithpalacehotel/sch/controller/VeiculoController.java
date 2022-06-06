@@ -45,9 +45,10 @@ public class VeiculoController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Veiculo> update(@Valid @RequestBody Veiculo obj, BindingResult br) {
+    public ResponseEntity<Veiculo> update(@PathVariable Integer id, @Valid @RequestBody Veiculo obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

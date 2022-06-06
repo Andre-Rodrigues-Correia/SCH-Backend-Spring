@@ -44,9 +44,10 @@ public class FuncionarioController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Funcionario> update(@Valid @RequestBody Funcionario obj, BindingResult br) {
+    public ResponseEntity<Funcionario> update(@PathVariable Integer id, @Valid @RequestBody Funcionario obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+        obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(obj);
     }

@@ -18,7 +18,7 @@ import com.smithpalacehotel.sch.services.LocalEventoService;
 import com.smithpalacehotel.sch.services.exceptions.ConstraintException;
 
 @RestController
-@RequestMapping(value = "/localEventos")
+@RequestMapping(value = "/localeventos")
 public class LocalEventoController {
 
     @Autowired

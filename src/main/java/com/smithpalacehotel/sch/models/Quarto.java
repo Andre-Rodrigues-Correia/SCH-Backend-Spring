@@ -15,7 +15,7 @@ public class Quarto implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
-    @NotBlank(message = "A numero deve ser preenchida.")
+    @NotBlank(message = "O número deve ser preenchido.")
     public String numeroQuarto;
 
     public Boolean statusQuarto;

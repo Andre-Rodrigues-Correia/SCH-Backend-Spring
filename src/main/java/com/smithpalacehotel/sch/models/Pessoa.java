@@ -26,7 +26,7 @@ public abstract class Pessoa implements Serializable{
     public String cpf;
 
     @Column(length = 50)
-    @NotBlank(message = "Nome deve ser preenchido")
+    @NotBlank(message = "O Login deve ser preenchido")
     @Size(min = 5, max = 50, message = "O nome deve ter entre 5 e 100 letras.")
     public String login;
 

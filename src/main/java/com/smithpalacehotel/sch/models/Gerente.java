@@ -5,9 +5,12 @@ import lombok.*;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Gerente extends Pessoa{
+    public Gerente(){
+        super();
+    }
+
     @Builder
     public Gerente(Integer id, String nome, String cpf, String login, String senha, Cidade cidade) {
         super(id, nome, cpf, login, senha, cidade);

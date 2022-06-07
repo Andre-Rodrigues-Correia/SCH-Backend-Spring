@@ -20,7 +20,7 @@ public class Veiculo implements Serializable{
 
     public Boolean statusVeiculo;
 
-    @NotBlank
+    @NotBlank(message = "O nome do veículo não deve estar em branco.")
     public String nomeVeiculo;
     
     @Min(value = 0L, message = "A quantidade de vezes usado deve ser positiva.")

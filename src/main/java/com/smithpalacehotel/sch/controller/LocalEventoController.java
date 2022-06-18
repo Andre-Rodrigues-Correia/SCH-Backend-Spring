@@ -58,5 +58,4 @@ public class LocalEventoController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }

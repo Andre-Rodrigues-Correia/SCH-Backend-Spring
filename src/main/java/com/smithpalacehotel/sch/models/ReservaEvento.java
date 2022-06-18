@@ -18,8 +18,6 @@ public class ReservaEvento implements Serializable{
 
     public LocalDateTime data;
 
-    public Boolean status;
-
     @ManyToOne
     @JoinColumn(name = "localevento_id")
     public LocalEvento localEvento;

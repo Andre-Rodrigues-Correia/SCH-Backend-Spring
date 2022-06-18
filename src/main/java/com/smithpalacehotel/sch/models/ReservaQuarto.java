@@ -19,8 +19,6 @@ public class ReservaQuarto implements Serializable{
 
   public LocalDateTime dataFinal;
 
-  public Boolean status;
-
   @ManyToOne
   @JoinColumn(name = "quarto_id")
   public Quarto quarto;

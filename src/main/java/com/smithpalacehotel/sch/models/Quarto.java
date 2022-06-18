@@ -18,7 +18,7 @@ public class Quarto implements Serializable{
     @NotBlank(message = "O número deve ser preenchido.")
     public String numeroQuarto;
 
-    public Boolean statusQuarto;
+    public Boolean status;
     
     public Integer capacidadePessoas;
 }

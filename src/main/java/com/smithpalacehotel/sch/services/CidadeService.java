@@ -8,7 +8,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.smithpalacehotel.sch.models.Cidade;
-import com.smithpalacehotel.sch.models.Uf;
 import com.smithpalacehotel.sch.repository.CidadeRepository;
 import com.smithpalacehotel.sch.services.exceptions.DataIntegrityException;
 import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;

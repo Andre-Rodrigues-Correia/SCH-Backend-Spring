@@ -80,12 +80,12 @@ public class _DBService {
         LocalEvento localEvento3 = new LocalEvento(null, "Salão de Festas Pequeno", true, 100);
         
         // ReservaEvento
-        ReservaEvento reservaEvento1 = new ReservaEvento(null, LocalDateTime.parse("2022-05-10 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), true, localEvento1, cliente1);
-        ReservaEvento reservaEvento2 = new ReservaEvento(null, LocalDateTime.parse("2022-05-11 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), true, localEvento2, cliente2);
+        ReservaEvento reservaEvento1 = new ReservaEvento(null, LocalDateTime.parse("2022-05-10 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), localEvento1, cliente1);
+        ReservaEvento reservaEvento2 = new ReservaEvento(null, LocalDateTime.parse("2022-05-11 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), localEvento2, cliente2);
 
         // // ReservaQuarto
-        ReservaQuarto reservaQuarto1 = new ReservaQuarto(null, LocalDateTime.parse("2022-05-10 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), LocalDateTime.parse("2022-05-30 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), true, quarto1, cliente3);
-        ReservaQuarto reservaQuarto2 = new ReservaQuarto(null, LocalDateTime.parse("2022-05-01 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), LocalDateTime.parse("2022-05-20 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), true, quarto2, cliente1);
+        ReservaQuarto reservaQuarto1 = new ReservaQuarto(null, LocalDateTime.parse("2022-05-10 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), LocalDateTime.parse("2022-05-30 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), quarto1, cliente3);
+        ReservaQuarto reservaQuarto2 = new ReservaQuarto(null, LocalDateTime.parse("2022-05-01 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), LocalDateTime.parse("2022-05-20 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), quarto2, cliente1);
 
         // // Reserva Veiculo
         ReservaVeiculo reservaVeiculo1 = new ReservaVeiculo(null, LocalDateTime.parse("2022-05-10 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), false, veiculo1, reservaQuarto1);

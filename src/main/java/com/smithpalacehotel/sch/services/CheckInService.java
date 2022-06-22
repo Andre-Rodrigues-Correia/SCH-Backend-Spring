@@ -72,13 +72,13 @@ public class CheckInService {
         // Regra de Negocio 1: Não deixar mais de um checkin para uma mesma reserva
         boolean checkInUnico = true;
         if (obj.getReservaEvento() == null){
-            Collection<CheckIn> checkIns = checkInRepository.findByReservaQuarto(obj.getReservaQuarto());
+            Collection<CheckIn> checkIns = checkInRepository.findCheckInByReservaQuarto(obj.getReservaQuarto().getId());
 
             for (CheckIn checkIn : checkIns)
                 if (checkIn != null) checkInUnico = false;
         }
         else if (obj.getReservaQuarto() == null){
-            Collection<CheckIn> checkIns = checkInRepository.findByReservaEvento(obj.getReservaEvento());
+            Collection<CheckIn> checkIns = checkInRepository.findCheckInByReservaEvento(obj.getReservaEvento().getId());
 
             for (CheckIn checkIn : checkIns)
                 if (checkIn != null) checkInUnico = false;
@@ -87,7 +87,7 @@ public class CheckInService {
             throw new BusinessRuleException("Não é possível atribuir mais de um CheckIn para uma mesma reserva!");
         }
 
-        // Regra de Negocio 2: Checar o status do quarto
+        // TODO Regra de Negocio 2: Checar o status do quarto
         boolean reservaPronta = false;
         if (obj.getReservaEvento() == null){
             Quarto quarto = quartoRepository.findById(obj.getReservaQuarto().getQuarto().getId()).get();

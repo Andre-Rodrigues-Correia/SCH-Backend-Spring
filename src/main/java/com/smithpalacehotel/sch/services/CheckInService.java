@@ -69,6 +69,10 @@ public class CheckInService {
     }
 
     public boolean verificarRegrasDeNegocio(CheckIn obj){
+        // Retorna erro caso não receba informações sobre as reservas
+        if (obj.getReservaQuarto() == null && obj.getReservaEvento() == null)
+            throw new ObjectNotFoundException("É necessário informar pelo menos uma reserva!");
+
         // Regra de Negocio 1: Não deixar mais de um checkin para uma mesma reserva
         boolean checkInUnico = true;
         if (obj.getReservaEvento() == null){
@@ -87,16 +91,15 @@ public class CheckInService {
             throw new BusinessRuleException("Não é possível atribuir mais de um CheckIn para uma mesma reserva!");
         }
 
-        // TODO Regra de Negocio 2: Checar o status do quarto
+        // Regra de Negocio 2: Checar o status do quarto ou local de evento
         boolean reservaPronta = false;
-        if (obj.getReservaEvento() == null){
-            Quarto quarto = quartoRepository.findById(obj.getReservaQuarto().getQuarto().getId()).get();
-            reservaPronta = quarto.getStatus();
+        if (obj.getReservaEvento() == null && checkInRepository.findQuartoStatusByReservaQuarto(obj.getReservaQuarto().getId())){
+            reservaPronta = true;
         }
-        else if (obj.getReservaQuarto() == null){
-            LocalEvento evento = localEventoRepository.findById(obj.getReservaEvento().getLocalEvento().getId()).get();
-            reservaPronta = evento.getStatus();
+        else if (obj.getReservaQuarto() == null && checkInRepository.findEventoStatusByReservaEvento(obj.getReservaEvento().getId())){
+            reservaPronta = true;
         }
+
         if (!reservaPronta){
             throw new BusinessRuleException("O local de evento está em manutenção!");
         }

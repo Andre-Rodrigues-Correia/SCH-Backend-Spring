@@ -2,6 +2,8 @@ package com.smithpalacehotel.sch.services;
 
 import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.time.Month;
+import java.time.Year;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -64,12 +66,12 @@ public class ReservaEventoService {
         
         Collection<ReservaEvento> reservas = repository.findLastReservaEventoByCliente(obj.getCliente().getId());
 
-        Year ano = obj.getData().getYear();
-        Month mes = obj.getData().getMonth();
+        // Year ano = obj.getData().getYear();
+        // Month mes = obj.getData().getMonth();
         int num = 0;
 
-        for (ReservaEvento reserva : reservas)
-            if (reserva.getData().getMonth() == mes && reserva.getData().getYear() == ano) num++;
+        // for (ReservaEvento reserva : reservas)
+            // if (reserva.getData().getMonth() == mes && reserva.getData().getYear() == ano) num++;
 
         if (num >= 2) aluguelInvalido = true;
 
@@ -81,7 +83,7 @@ public class ReservaEventoService {
         }
 
         if (!capacidadeMaxima){
-            throw new BusinessRuleException("Capacidade máxima do local excedida!");
+            // throw new BusinessRuleException("Capacidade máxima do local excedida!");
         }
 
         if (capacidadeMaxima && aluguelInvalido){

@@ -12,7 +12,7 @@ public interface ReservaQuartoRepository extends JpaRepository<ReservaQuarto, In
   @Transactional(readOnly = true)
   @Query(value = "SELECT * FROM reservaquarto INNER JOIN quarto ON reservaquarto.quarto_id = quarto.id WHERE reservaquarto.data = ?1;", nativeQuery = true)
     public Collection<ReservaQuarto> findReservaQuartoByData(LocalDateTime data);
-  // Encontrar todos os checkins da reservaquarto
+  
   @Transactional(readOnly = true)
     @Query(value = "SELECT * FROM reservaquarto INNER JOIN checkin ON checkin.reservaquarto.id = reservaquarto.id INNER JOIN checkout ON checkout.checkin_id != checkin.id WHERE reservaquarto.id = ?1;", nativeQuery = true)
     public Collection<ReservaQuarto> findDevedoresByReservaQuarto(Integer reservaQuartoId);

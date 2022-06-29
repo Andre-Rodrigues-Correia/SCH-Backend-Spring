@@ -10,10 +10,10 @@ import com.smithpalacehotel.sch.models.*;
 @Repository
 public interface ReservaEventoRepository extends JpaRepository<ReservaEvento, Integer>{
     @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM reservaevento INNER JOIN cliente ON cliente.id = reservaevento.cliente_id WHERE client.id = ?1 ORDER BY id DESC LIMIT 2;", nativeQuery = true)
+    @Query(value = "SELECT reserva_evento.* FROM reserva_evento INNER JOIN pessoa ON pessoa.id = reserva_evento.cliente_id WHERE pessoa.id = ?1 ORDER BY id DESC LIMIT 2;", nativeQuery = true)
     public Collection<ReservaEvento> findLastReservaEventoByCliente(Integer clienteId);
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT COUNT(checkin) > reservaevento.capacidade FROM reservaevento, checkin WHERE checkin.reservaevento_id = reservaevento.id AND reservaevento.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) > local_evento.capacidade FROM reserva_evento, check_in, local_evento WHERE check_in.reservaevento_id = reserva_evento.id AND local_evento.id = reserva_evento.localevento_id AND reserva_evento.id = ?1;", nativeQuery = true)
     public Boolean findCapacidadeByReservaEvento(Integer reservaEventoId);
 }

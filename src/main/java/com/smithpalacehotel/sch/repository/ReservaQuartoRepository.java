@@ -2,6 +2,8 @@ package com.smithpalacehotel.sch.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,10 +12,10 @@ import com.smithpalacehotel.sch.models.*;
 @Repository
 public interface ReservaQuartoRepository extends JpaRepository<ReservaQuarto, Integer>{
   @Transactional(readOnly = true)
-  @Query(value = "SELECT * FROM reservaquarto INNER JOIN quarto ON reservaquarto.quarto_id = quarto.id WHERE reservaquarto.data = ?1;", nativeQuery = true)
+  @Query(value = "SELECT reserva_quarto.* FROM reserva_quarto INNER JOIN quarto ON reserva_quarto.quarto_id = quarto.id WHERE ?1 >= reserva_quarto.data_inicial AND ?1 <= reserva_quarto.data_final;", nativeQuery = true)
     public Collection<ReservaQuarto> findReservaQuartoByData(LocalDateTime data);
   
   @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM reservaquarto INNER JOIN checkin ON checkin.reservaquarto.id = reservaquarto.id INNER JOIN checkout ON checkout.checkin_id != checkin.id WHERE reservaquarto.id = ?1;", nativeQuery = true)
-    public Collection<ReservaQuarto> findDevedoresByReservaQuarto(Integer reservaQuartoId);
+    @Query(value = "SELECT pessoa.* FROM reserva_quarto INNER JOIN check_in ON check_in.reservaquarto_id = reserva_quarto.id INNER JOIN check_out ON check_out.checkin_id != check_in.id INNER JOIN pessoa ON pessoa.id = reserva_quarto.cliente_id WHERE reserva_quarto.id = ?1;", nativeQuery = true)
+    public Collection<Cliente> findDevedoresByReservaQuarto(Integer reservaQuartoId);
 }

@@ -10,18 +10,18 @@ import com.smithpalacehotel.sch.models.*;
 @Repository
 public interface CheckInRepository extends JpaRepository<CheckIn, Integer>{
     @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM checkin INNER JOIN reservaquarto ON checkin.reservaquarto_id = reservaquarto.id WHERE checkin.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT check_in.* FROM check_in INNER JOIN reserva_quarto ON check_in.reservaquarto_id = reserva_quarto.id WHERE check_in.id = ?1;", nativeQuery = true)
     public Collection<CheckIn> findCheckInByReservaQuarto(Integer id);
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT * FROM checkin INNER JOIN reservaevento ON checkin.reservaevento_id = reservaevento.id WHERE checkin.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT check_in.* FROM check_in INNER JOIN reserva_evento ON check_in.reservaevento_id = reserva_evento.id WHERE check_in.id = 1;", nativeQuery = true)
     public Collection<CheckIn> findCheckInByReservaEvento(Integer id);
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT quarto.status FROM quarto INNER JOIN reservaquarto ON reservaquarto.quarto_id = quarto.id WHERE reservaquarto.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT quarto.status FROM quarto INNER JOIN reserva_quarto ON reserva_quarto.quarto_id = quarto.id WHERE reserva_quarto.id = ?1;", nativeQuery = true)
     public Boolean findQuartoStatusByReservaQuarto(Integer reservaQuarto);
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT localevento.status FROM localevento INNER JOIN reservaevento ON reservaevento.localevento_id = localevento.id WHERE reservaevento.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT local_evento.status FROM local_evento INNER JOIN reserva_evento ON reserva_evento.localevento_id = local_evento.id WHERE reserva_evento.id = ?1;", nativeQuery = true)
     public Boolean findEventoStatusByReservaEvento(Integer reservaEvento);
 }

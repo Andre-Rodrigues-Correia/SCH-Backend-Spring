@@ -19,6 +19,6 @@ public interface CheckOutRepository extends JpaRepository<CheckOut, Integer>{
     public Boolean findReservaEventoHorarioByCheckIn(Integer checkInId, LocalDateTime dataCheckOut); // Retorna true se houver conflito de horario
     
     @Transactional(readOnly = true)
-    @Query(value = "SELECT COUNT(*) > 4 FROM check_out INNER JOIN reserva_quarto ON reserva_quarto.id = check_out.reservaquarto_id INNER JOIN pessoa ON pessoa.id = reserva_quarto.cliente_id WHERE pessoa.id = 1;", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) > 4 FROM check_out INNER JOIN reserva_quarto ON reserva_quarto.id = check_out.reservaquarto_id INNER JOIN pessoa ON pessoa.id = reserva_quarto.cliente_id WHERE pessoa.id = ?1;", nativeQuery = true)
     public Boolean findQuantiadeCheckOutByCliente(Integer clienteId);
 }

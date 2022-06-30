@@ -14,7 +14,7 @@ public interface CheckInRepository extends JpaRepository<CheckIn, Integer>{
     public Collection<CheckIn> findCheckInByReservaQuarto(Integer id);
 
     @Transactional(readOnly = true)
-    @Query(value = "SELECT check_in.* FROM check_in INNER JOIN reserva_evento ON check_in.reservaevento_id = reserva_evento.id WHERE check_in.id = 1;", nativeQuery = true)
+    @Query(value = "SELECT check_in.* FROM check_in INNER JOIN reserva_evento ON check_in.reservaevento_id = reserva_evento.id WHERE check_in.id = ?1;", nativeQuery = true)
     public Collection<CheckIn> findCheckInByReservaEvento(Integer id);
 
     @Transactional(readOnly = true)

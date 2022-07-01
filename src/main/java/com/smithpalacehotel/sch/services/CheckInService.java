@@ -1,18 +1,11 @@
 package com.smithpalacehotel.sch.services;
 
 import java.util.Collection;
-
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
 import com.smithpalacehotel.sch.models.CheckIn;
-import com.smithpalacehotel.sch.models.LocalEvento;
-import com.smithpalacehotel.sch.models.Quarto;
 import com.smithpalacehotel.sch.repository.CheckInRepository;
-import com.smithpalacehotel.sch.repository.LocalEventoRepository;
-import com.smithpalacehotel.sch.repository.QuartoRepository;
 import com.smithpalacehotel.sch.services.exceptions.BusinessRuleException;
 import com.smithpalacehotel.sch.services.exceptions.DataIntegrityException;
 import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
@@ -21,10 +14,6 @@ import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
 public class CheckInService {
     @Autowired
     private CheckInRepository checkInRepository;
-    @Autowired
-    private QuartoRepository quartoRepository;
-    @Autowired
-    private LocalEventoRepository localEventoRepository;
 
     public Collection<CheckIn> findAll() {
         return checkInRepository.findAll();

@@ -66,12 +66,12 @@ public class ReservaEventoService {
         
         Collection<ReservaEvento> reservas = repository.findLastReservaEventoByCliente(obj.getCliente().getId());
 
-        int ano = obj.getData().getYearValue();
-        int mes = obj.getData().getMonthValue();
+        // int ano = obj.getData().getYearValue();
+        // int mes = obj.getData().getMonthValue();
         int num = 0;
 
-        for (ReservaEvento reserva : reservas)
-            if (reserva.getData().getMonthValue() == mes && reserva.getData().getYearValue() == ano) num++;
+        // for (ReservaEvento reserva : reservas)
+        //     if (reserva.getData().getMonthValue() == mes && reserva.getData().getYearValue() == ano) num++;
 
         if (num >= 2) aluguelInvalido = true;
 

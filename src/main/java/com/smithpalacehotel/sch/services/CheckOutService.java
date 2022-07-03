@@ -57,6 +57,49 @@ public class CheckOutService {
     }
 
     public boolean verificarRegrasDeNegocio(CheckOut obj){
-        return true;
+        // Retorna erro caso não receba informações sobre as reservas
+        if (obj.getReservaQuarto() == null && obj.getReservaEvento() == null)
+            throw new ObjectNotFoundException("É necessário informar pelo menos uma reserva!");
+        
+         // Regra de Negocio 1: Verificar se o CheckOut foi realizado dentro do prazo da reserva
+        
+        boolean prazoReservaEvento = true;
+        boolean prazoReservaQuarto = true;
+        
+       if(checkOutRepository.findReservaEventoHorarioByCheckIn(obj.getId())){
+            prazoReservaEvento = false;
+       }else;
+        
+       if(checkOutRepository.findReservaQuartoHorarioByCheckIn(obj.getId())){
+            prazoReservaQuarto = false;
+       }else;
+         
+        
+        if (!prazoReservaQuarto){
+            throw new BusinessRuleException("Reserva do quarto passou do prazo!");
+        }else;
+        if (!prazoReservaEvento){
+           throw new BusinessRuleException("Reserva do Local do evento passou do prazo!");
+        }else;
+        
+        // Regra de Negocio 2: Verificar se houveram mais de quatro CheckOut's para fornecer desconto
+        
+         boolean desconto = false;
+        
+         Collection<CheckOut> checkOuts = checkOutRepository.findQuantiadeCheckOutByCliente(obj.getId());
+
+        for (CheckOut checkOut : checkOuts)
+            if (checkOut >= 4) desconto = true;
+        
+          if (!desconto){
+            throw new BusinessRuleException("Desconto disponível para o Cliente!");
+        }    
+        
+        if (prazoReservaEvento && prazoReservaQuarto && desconto){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

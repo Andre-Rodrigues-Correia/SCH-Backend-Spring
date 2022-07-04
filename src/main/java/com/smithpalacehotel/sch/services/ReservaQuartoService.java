@@ -4,10 +4,13 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import com.smithpalacehotel.sch.models.ReservaQuarto;
+import com.smithpalacehotel.sch.models.*;
 import com.smithpalacehotel.sch.repository.ReservaQuartoRepository;
+import com.smithpalacehotel.sch.services.exceptions.BusinessRuleException;
 import com.smithpalacehotel.sch.services.exceptions.DataIntegrityException;
 import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
+
+import ch.qos.logback.core.net.server.Client;
 
 @Service
 public class ReservaQuartoService {
@@ -58,6 +61,33 @@ public class ReservaQuartoService {
     }
 
     public boolean verificarRegrasDeNegocio(ReservaQuarto obj){
-        return true;
+        // Regra de Negocio 1: Verificar se não existe conflito
+        boolean conflito = false;
+        Collection<ReservaQuarto> reservaQuartos = reservaQuartoRepository.findReservaQuartoByData(obj.getDataInicial(), obj.getDataFinal());
+
+        for (ReservaQuarto reservaQuarto : reservaQuartos)
+            if (reservaQuarto != null) conflito = true;
+        
+        if (!conflito){
+            throw new BusinessRuleException("A reserva possui conflito de horário!");
+        }
+
+        // Regra de Negocio 2: Verificar se possui dividas ativas
+        boolean dividas = false;
+        Collection<Cliente> clientes = reservaQuartoRepository.findDevedoresByReservaQuarto(obj.getId());
+
+        for (Cliente cliente : clientes)
+            if (cliente != null) dividas = true;
+
+        if (!dividas){
+            throw new BusinessRuleException("O cliente possui dívidas com o Hotel!");
+        }
+
+        if (!conflito && !dividas){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }

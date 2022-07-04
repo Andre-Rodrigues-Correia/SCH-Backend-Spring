@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.smithpalacehotel.sch.models.ReservaEvento;
 import com.smithpalacehotel.sch.repository.ReservaEventoRepository;
+import com.smithpalacehotel.sch.services.exceptions.BusinessRuleException;
 import com.smithpalacehotel.sch.services.exceptions.DataIntegrityException;
 import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
 
@@ -66,12 +67,12 @@ public class ReservaEventoService {
         
         Collection<ReservaEvento> reservas = repository.findLastReservaEventoByCliente(obj.getCliente().getId());
 
-        // int ano = obj.getData().getYearValue();
-        // int mes = obj.getData().getMonthValue();
+        int ano = obj.getData().getYear();
+        int mes = obj.getData().getMonthValue();
         int num = 0;
 
-        // for (ReservaEvento reserva : reservas)
-        //     if (reserva.getData().getMonthValue() == mes && reserva.getData().getYearValue() == ano) num++;
+        for (ReservaEvento reserva : reservas)
+            if (reserva.getData().getMonthValue() == mes && reserva.getData().getYear() == ano) num++;
 
         if (num >= 2) aluguelInvalido = true;
 
@@ -83,7 +84,7 @@ public class ReservaEventoService {
         }
 
         if (!capacidadeMaxima){
-            // throw new BusinessRuleException("Capacidade máxima do local excedida!");
+            throw new BusinessRuleException("Capacidade máxima do local excedida!");
         }
 
         if (capacidadeMaxima && aluguelInvalido){

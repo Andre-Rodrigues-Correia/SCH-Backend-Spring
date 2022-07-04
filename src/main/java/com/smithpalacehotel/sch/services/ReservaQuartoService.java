@@ -12,6 +12,7 @@ import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
 
 import ch.qos.logback.core.net.server.Client;
 
+// Feito por Silvana
 @Service
 public class ReservaQuartoService {
 

@@ -15,6 +15,7 @@ import com.smithpalacehotel.sch.services.exceptions.BusinessRuleException;
 import com.smithpalacehotel.sch.services.exceptions.DataIntegrityException;
 import com.smithpalacehotel.sch.services.exceptions.ObjectNotFoundException;
 
+// Feito por William
 @Service
 public class ReservaEventoService {
 

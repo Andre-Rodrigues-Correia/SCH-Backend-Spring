@@ -67,6 +67,10 @@ public class CheckOutService {
 
         // Regra de Negocio 2: Verificar se tem mais de 5 checkouts
         boolean maisDeCinco = checkOutRepository.findQuantiadeCheckOutByCliente(obj.getReservaQuarto().getCliente().getId());
+
+        if (maisDeCinco){
+            obj.setValor(obj.getValor() - obj.getValor()*0.2);
+        }
         
         if (!conflito){
             return true;

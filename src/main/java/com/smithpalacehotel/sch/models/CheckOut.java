@@ -3,6 +3,9 @@ package com.smithpalacehotel.sch.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.validation.constraints.*;
+
+import org.hibernate.id.IntegralDataTypeHolder;
+
 import javax.persistence.*;
 import lombok.*;
 
@@ -17,6 +20,8 @@ public class CheckOut implements Serializable{
     public Integer id;
 
     public LocalDateTime dataCheckout;
+
+    public Double valor;
 
     @ManyToOne
     @JoinColumn(name="checkin_id")

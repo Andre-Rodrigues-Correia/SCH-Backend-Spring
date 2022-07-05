@@ -96,8 +96,8 @@ public class _DBService {
         CheckIn checkin2 = new CheckIn(null, LocalDateTime.parse("2022-05-01 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), reservaEvento2, reservaQuarto2);
                                        
         // //CheckOut
-        CheckOut checkout1 = new CheckOut(null, LocalDateTime.parse("2022-05-18 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), checkin1, reservaQuarto1);
-        CheckOut checkout2 = new CheckOut(null, LocalDateTime.parse("2022-07-22 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), checkin2, reservaQuarto2);
+        CheckOut checkout1 = new CheckOut(null, LocalDateTime.parse("2022-05-18 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), 40.0, checkin1, reservaQuarto1);
+        CheckOut checkout2 = new CheckOut(null, LocalDateTime.parse("2022-07-22 00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")), 50.0, checkin2, reservaQuarto2);
 
         ufRepository.saveAll(Arrays.asList(uf1, uf2, uf3));
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));

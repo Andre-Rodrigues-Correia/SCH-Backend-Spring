@@ -16,4 +16,8 @@ public interface ReservaEventoRepository extends JpaRepository<ReservaEvento, In
     @Transactional(readOnly = true)
     @Query(value = "SELECT COUNT(*) > local_evento.capacidade FROM reserva_evento, check_in, local_evento WHERE check_in.reservaevento_id = reserva_evento.id AND local_evento.id = reserva_evento.localevento_id AND reserva_evento.id = ?1;", nativeQuery = true)
     public Boolean findCapacidadeByReservaEvento(Integer reservaEventoId);
+    
+    @Transactional(readOnly = true)
+    @Query(value = "SELECT reserva_evento.* FROM reserva_evento INNER JOIN local_evento ON reserva_evento.localevento_id = ?1 WHERE reserva_evento.data >= TIMESTAMP ?2 AND reserva_evento.data <= TIMESTAMP ?3 ORDER BY reserva_evento.data;", nativeQuery = true)
+    public Collection<ReservaEvento> listReservaEventoByLocalEvento(Integer localEventoId, LocalDateTime inicial, LocalDateTime fim);
 }

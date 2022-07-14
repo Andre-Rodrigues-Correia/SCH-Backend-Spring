@@ -58,6 +58,11 @@ public class CheckOutService {
         }
     }
 
+    
+    public Collection<CheckOut> relatorio(DateTime data_Checkout, DateTime data_fim) {
+        return repository.listCheckOutByReservaQuarto(data_Checkout, data_fim);
+    }
+    
     public boolean verificarRegrasDeNegocio(CheckOut obj){
         // Regra de Negocio 1: Verificar se esta dentro do período de reserva
         boolean conflito = checkOutRepository.findReservaQuartoHorarioByCheckIn(obj.getCheckin().getId(), obj.getDataCheckout());

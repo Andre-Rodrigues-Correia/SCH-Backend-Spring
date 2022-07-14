@@ -59,10 +59,10 @@ public class ReservaVeiculoController {
         return ResponseEntity.noContent().build();
     }
     
-    @RequestMapping(value = "/reservaveiculoquantidadevezesusado", method = RequestMethod.GET)
-    public ResponseEntity<Void> relatorio(@Valid @RequestBody String placa, @Valid @RequestBody Integer quantidadeVezesUsado) {
-        service.relatorio(placa, quantidadeVezesUsado);
-        return ResponseEntity.ok().build();
+    @RequestMapping(value = "/reservaveiculoquantidadevezesusado/{placa}/{quantidade}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<ReservaVeiculo>> relatorio(@PathVariable String placa, @PathVariable Integer quantidade) {
+        Collection<ReservaVeiculo> collection = service.relatorio(placa, quantidade);
+        return ResponseEntity.ok().body(collection);
     }
 
 }

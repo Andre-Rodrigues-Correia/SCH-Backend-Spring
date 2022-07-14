@@ -1,5 +1,7 @@
 package com.smithpalacehotel.sch.services;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -59,6 +61,10 @@ public class ReservaQuartoService {
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Não é possível excluir um ReservaQuarto!");
         }
+    }
+
+    public Collection<ReservaQuarto> listarQuartoByStatus(LocalDateTime inicio, LocalDateTime fim){
+        return reservaQuartoRepository.listQuartoDisponivel(inicio, fim);
     }
 
     public boolean verificarRegrasDeNegocio(ReservaQuarto obj){

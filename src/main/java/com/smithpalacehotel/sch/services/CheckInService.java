@@ -1,5 +1,6 @@
 package com.smithpalacehotel.sch.services;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -56,6 +57,10 @@ public class CheckInService {
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Não é possível excluir um CheckIn!");
         }
+    }
+
+    public Collection<CheckIn> relatorio(LocalDateTime inicio, LocalDateTime fim) {
+        return checkInRepository.listCheckIn(inicio, fim);
     }
 
     public boolean verificarRegrasDeNegocio(CheckIn obj){

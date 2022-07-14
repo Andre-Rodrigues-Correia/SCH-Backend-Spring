@@ -60,9 +60,9 @@ public class ReservaEventoController {
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/reservaeventoporlocal", method = RequestMethod.GET)
-    public ResponseEntity<Void> relatorio(@Valid @RequestBody Integer localevento, @Valid @RequestBody LocalDateTime inicial, @Valid @RequestBody LocalDateTime fim) {
-        service.relatorio(localevento, inicial, fim);
-        return ResponseEntity.ok().build();
+    @RequestMapping(value = "/reservaeventoporlocal/{localevento}/{inicial}/{fim}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<ReservaEvento>> relatorio(@Valid @PathVariable Integer localevento, @Valid @PathVariable String inicial, @Valid @PathVariable String fim) {
+        Collection<ReservaEvento> collection = service.relatorio(localevento, LocalDateTime.parse(inicial), LocalDateTime.parse(fim));
+        return ResponseEntity.ok().body(collection);
     }
 }

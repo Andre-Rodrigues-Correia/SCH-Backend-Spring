@@ -1,5 +1,6 @@
 package com.smithpalacehotel.sch.controller;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -57,6 +58,12 @@ public class CheckInController {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/listar/{inicio}/{fim}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<CheckIn>> listarCheckin(@PathVariable String inicio, @PathVariable String fim) {
+        Collection<CheckIn> collection = service.relatorio(LocalDateTime.parse(inicio), LocalDateTime.parse(fim));
+        return ResponseEntity.ok().body(collection);
     }
 
 }

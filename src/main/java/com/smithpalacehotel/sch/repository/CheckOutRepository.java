@@ -25,6 +25,6 @@ public interface CheckOutRepository extends JpaRepository<CheckOut, Integer>{
     public Boolean findQuantiadeCheckOutByCliente(Integer clienteId);
     
     @Transactional(readOnly = true)
-    @Query(value = "SELECT check_out.* FROM check_out,reserva_quarto WHERE check_out.reservaquarto_id=reserva_quarto.id AND check_out.data_checkout<>reserva_quarto.data_final;", nativeQuery = true)
-    public Collection<CheckOut> listCheckOutByReservaQuarto(LocalDateTime data_checkout, LocalDateTime data_fim);
+    @Query(value = "SELECT check_out.* FROM check_out,reserva_quarto WHERE check_out.reservaquarto_id = reserva_quarto.id AND check_out.data_checkout > reserva_quarto.data_final;", nativeQuery = true)
+    public Collection<CheckOut> listLateCheckOut();
 }

@@ -60,10 +60,10 @@ public class CheckOutController {
         return ResponseEntity.noContent().build();
     }
     
-    @RequestMapping(value = "/checkoutporreservaquarto", method = RequestMethod.GET)
-    public ResponseEntity<Void> relatorio(@Valid @RequestBody LocalDateTime data_checkout, @Valid @RequestBody LocalDateTime data_fim) {
-        service.relatorio(data_checkout, data_fim);
-        return ResponseEntity.ok().build();
+    @RequestMapping(value = "/atrasodecheckout", method = RequestMethod.GET)
+    public ResponseEntity<Collection<CheckOut>> relatorio() {
+        Collection<CheckOut> collection = service.relatorio();
+        return ResponseEntity.ok().body(collection);
     }
 
 }

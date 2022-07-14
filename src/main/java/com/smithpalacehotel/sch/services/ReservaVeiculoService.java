@@ -29,7 +29,7 @@ public class ReservaVeiculoService {
     }
     
     public Collection<ReservaVeiculo> relatorio(String placa, Integer quantidadeVezesUsado) {
-        return repository.listReservaVeiculoByQtdVezesUsado(placa, quantidadeVezesUsado);
+        return reservaVeiculoRepository.listReservaVeiculoByQtdVezesUsado(placa, quantidadeVezesUsado);
     }
 
     public ReservaVeiculo findById(Integer id){

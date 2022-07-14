@@ -1,5 +1,6 @@
 package com.smithpalacehotel.sch.controller;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smithpalacehotel.sch.models.ReservaVeiculo;
-import com.smithpalacehotel.sch.services.ReservaVeiculoService;
+import com.smithpalacehotel.sch.models.ReservaEvento;
+import com.smithpalacehotel.sch.services.ReservaEventoService;
 import com.smithpalacehotel.sch.services.exceptions.ConstraintException;
 
 @RestController
@@ -22,30 +23,30 @@ import com.smithpalacehotel.sch.services.exceptions.ConstraintException;
 public class ReservaEventoController {
 
     @Autowired
-    private ReservaVeiculoService service;
+    private ReservaEventoService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<ReservaVeiculo>> findAll() {
-        Collection<ReservaVeiculo> collection = service.findAll();
+    public ResponseEntity<Collection<ReservaEvento>> findAll() {
+        Collection<ReservaEvento> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ReservaVeiculo> find(@PathVariable Integer id) {
-        ReservaVeiculo obj = service.findById(id);
+    public ResponseEntity<ReservaEvento> find(@PathVariable Integer id) {
+        ReservaEvento obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ReservaVeiculo> insert(@Valid @RequestBody ReservaVeiculo obj, BindingResult br) {
+    public ResponseEntity<ReservaEvento> insert(@Valid @RequestBody ReservaEvento obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj = service.insert(obj);
         return ResponseEntity.ok().body(obj);
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<ReservaVeiculo> update(@PathVariable Integer id, @Valid @RequestBody ReservaVeiculo obj, BindingResult br) {
+    public ResponseEntity<ReservaEvento> update(@PathVariable Integer id, @Valid @RequestBody ReservaEvento obj, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         obj.setId(id);
@@ -58,11 +59,10 @@ public class ReservaEventoController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-    
+
     @RequestMapping(value = "/reservaeventoporlocal", method = RequestMethod.GET)
     public ResponseEntity<Void> relatorio(@Valid @RequestBody Integer localevento, @Valid @RequestBody LocalDateTime inicial, @Valid @RequestBody LocalDateTime fim) {
         service.relatorio(localevento, inicial, fim);
         return ResponseEntity.ok().build();
     }
-
 }

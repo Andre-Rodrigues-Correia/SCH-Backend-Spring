@@ -1,5 +1,6 @@
 package com.smithpalacehotel.sch.services;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -59,8 +60,8 @@ public class CheckOutService {
     }
 
     
-    public Collection<CheckOut> relatorio(DateTime data_checkout, DateTime data_fim) {
-        return repository.listCheckOutByReservaQuarto(data_checkout, data_fim);
+    public Collection<CheckOut> relatorio(LocalDateTime data_checkout, LocalDateTime data_fim) {
+        return checkOutRepository.listCheckOutByReservaQuarto(data_checkout, data_fim);
     }
     
     public boolean verificarRegrasDeNegocio(CheckOut obj){

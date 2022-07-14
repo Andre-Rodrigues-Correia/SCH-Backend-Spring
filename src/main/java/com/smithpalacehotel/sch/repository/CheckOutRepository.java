@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import com.smithpalacehotel.sch.models.*;
@@ -24,5 +26,5 @@ public interface CheckOutRepository extends JpaRepository<CheckOut, Integer>{
     
     @Transactional(readOnly = true)
     @Query(value = "SELECT check_out.* FROM check_out,reserva_quarto WHERE check_out.reservaquarto_id=reserva_quarto.id AND check_out.data_checkout<>reserva_quarto.data_final;", nativeQuery = true)
-    public Collection<CheckOut> listCheckOutByReservaQuarto(DateTime data_checkout, DateTime data_fim);
+    public Collection<CheckOut> listCheckOutByReservaQuarto(LocalDateTime data_checkout, LocalDateTime data_fim);
 }

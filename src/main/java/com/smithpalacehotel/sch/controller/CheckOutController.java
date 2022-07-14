@@ -1,5 +1,6 @@
 package com.smithpalacehotel.sch.controller;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -60,7 +61,7 @@ public class CheckOutController {
     }
     
     @RequestMapping(value = "/checkoutporreservaquarto", method = RequestMethod.GET)
-    public ResponseEntity<Void> relatorio(@Valid @RequestBody DateTime data_checkout, @Valid @RequestBody DateTime data_fim) {
+    public ResponseEntity<Void> relatorio(@Valid @RequestBody LocalDateTime data_checkout, @Valid @RequestBody LocalDateTime data_fim) {
         service.relatorio(data_checkout, data_fim);
         return ResponseEntity.ok().build();
     }

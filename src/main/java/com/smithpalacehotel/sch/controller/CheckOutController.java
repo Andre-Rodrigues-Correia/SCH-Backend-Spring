@@ -58,5 +58,11 @@ public class CheckOutController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @RequestMapping(value = "/checkoutporreservaquarto", method = RequestMethod.GET)
+    public ResponseEntity<Void> relatorio(@Valid @RequestBody DateTime data_checkout, @Valid @RequestBody DateTime data_fim) {
+        service.relatorio(data_checkout, data_fim);
+        return ResponseEntity.ok().build();
+    }
 
 }

@@ -61,6 +61,10 @@ public class ReservaEventoService {
     public Collection<ReservaEvento> findAll() {
         return repository.findAll();
     }
+    
+    public Collection<ReservaEvento> relatorio(Integer localEventoId, LocalDateTime inicial, LocalDateTime fim) {
+        return repository.listReservaEventoByLocalEvento(localEventoId, inicial, fim);
+    }
 
     public boolean verificarRegrasDeNegocio(ReservaEvento obj){
         // Regra de Negócio 1: Impedir o aluguel de um local de evento mais de 3 vezes seguidas em um mesmo mês por uma mesma pessoa.

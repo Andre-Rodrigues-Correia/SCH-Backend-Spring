@@ -20,7 +20,7 @@ public interface ReservaVeiculoRepository extends JpaRepository<ReservaVeiculo, 
     public Collection<ReservaVeiculo> findReservaVeiculoByVeiculo(Integer veiculoId);
     
     @Transactional(readOnly = true)
-    @Query(value = "SELECT reserva_veiculo * FROM reserva_veiculo INNER JOIN reserva_veiculo ON reserva_veiculo.placa = ?1 WHERE reserva_veiculo.quantidade_vezes_usado >= ?2 ORDER BY quantidade_vezes_usado;", nativeQuery = true)
+    @Query(value = "SELECT reserva_veiculo.* FROM reserva_veiculo INNER JOIN veiculo ON veiculo.PLACA = ?1 WHERE veiculo.QUANTIDADE_VEZES_USADO >= ?2 ORDER BY quantidade_vezes_usado;", nativeQuery = true)
     public Collection<ReservaVeiculo> listReservaVeiculoByQtdVezesUsado(String placa, Integer quantidadeVezesUsado);
 
 }

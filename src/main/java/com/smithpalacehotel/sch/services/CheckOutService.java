@@ -59,8 +59,8 @@ public class CheckOutService {
     }
 
     
-    public Collection<CheckOut> relatorio(DateTime data_Checkout, DateTime data_fim) {
-        return repository.listCheckOutByReservaQuarto(data_Checkout, data_fim);
+    public Collection<CheckOut> relatorio(DateTime data_checkout, DateTime data_fim) {
+        return repository.listCheckOutByReservaQuarto(data_checkout, data_fim);
     }
     
     public boolean verificarRegrasDeNegocio(CheckOut obj){

@@ -27,6 +27,10 @@ public class ReservaVeiculoService {
     public Collection<ReservaVeiculo> findAll() {
         return reservaVeiculoRepository.findAll();
     }
+    
+    public Collection<ReservaVeiculo> relatorio(String placa, Integer quantidadeVezesUsado) {
+        return repository.listReservaVeiculoByQtdVezesUsado(placa, quantidadeVezesUsado);
+    }
 
     public ReservaVeiculo findById(Integer id){
         ReservaVeiculo obj = reservaVeiculoRepository.findById(id).get();

@@ -58,5 +58,11 @@ public class ReservaEventoController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @RequestMapping(value = "/reservaeventoporlocal", method = RequestMethod.GET)
+    public ResponseEntity<Void> relatorio(@Valid @RequestBody Integer localevento, @Valid @RequestBody LocalDateTime inicial, @Valid @RequestBody LocalDateTime fim) {
+        service.relatorio(localevento, inicial, fim);
+        return ResponseEntity.ok().build();
+    }
 
 }

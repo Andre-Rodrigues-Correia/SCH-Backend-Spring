@@ -58,5 +58,11 @@ public class ReservaVeiculoController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @RequestMapping(value = "/reservaveiculoquantidadevezesusado", method = RequestMethod.GET)
+    public ResponseEntity<Void> relatorio(@Valid @RequestBody String placa, @Valid @RequestBody Integer quantidadeVezesUsado) {
+        service.relatorio(placa, quantidadeVezesUsado);
+        return ResponseEntity.ok().build();
+    }
 
 }

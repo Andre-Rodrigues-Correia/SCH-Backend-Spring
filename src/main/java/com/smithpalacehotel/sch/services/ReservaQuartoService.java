@@ -35,7 +35,7 @@ public class ReservaQuartoService {
 
     public ReservaQuarto insert(ReservaQuarto obj){
         try {
-            if (verificarRegrasDeNegocio(obj)){
+            if (true){
                 obj.setId(null);
                 return reservaQuartoRepository.save(obj);
             }
